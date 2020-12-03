@@ -3,7 +3,7 @@
     Dim bitmap1 As Bitmap
     Dim selector As New Selector
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        'lol it me
 
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
         ' caesar.Show()
