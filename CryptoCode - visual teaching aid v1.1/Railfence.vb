@@ -271,4 +271,10 @@
     Private Sub TrackBar1_Scroll(sender As Object, e As EventArgs) Handles TrackBar1.Scroll
         Label1.Text = TrackBar1.Value
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim menuitem As New Form1
+        menuitem.Show()
+        Me.Close()
+    End Sub
 End Class
