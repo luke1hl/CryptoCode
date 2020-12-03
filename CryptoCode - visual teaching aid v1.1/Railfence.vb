@@ -209,7 +209,45 @@
             letterfive.Left -= 1
         End While
         Threading.Thread.Sleep(1000)
+        'two to three and six to four
+        While lettertwo.Location.X <> xthree
+            lettertwo.Left += 1
+        End While
+        While lettersix.Location.X <> xfour
+            lettersix.Left -= 1
 
+        End While
+        'three to five and seven to six
+        While letterthree.Location.X <> xfive
+            letterthree.Left += 1
+
+        End While
+        While letterseven.Location.X <> xsix
+            letterseven.Left -= 1
+
+        End While
+        While letterfour.Location.X <> xseven
+            letterfour.Left += 1
+        End While
+        Threading.Thread.Sleep(1000)
+        For i = 0 To 70
+            lettertwo.Top -= 1
+        Next
+        For i = 0 To 140
+            letterthree.Top -= 1
+        Next
+        For i = 0 To 210
+            letterfour.Top -= 1
+        Next
+        For i = 0 To 70
+            lettersix.Top -= 1
+        Next
+        For i = 0 To 140
+            letterseven.Top -= 1
+        Next
+        For i = 0 To 210
+            lettereight.Top -= 1
+        Next
 
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
