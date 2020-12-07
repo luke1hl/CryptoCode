@@ -322,6 +322,29 @@
         frequencyanalysis(textdisplay.Text)
 
     End Sub
+    Private Function railfencedecrypt(input As String, numberofrows As Integer)
+        Dim inputc As Char() = input.ToCharArray()
+        Dim holderqueue(numberofrows - 1)
+        Dim final As String = ""
+        Dim x As Integer = 0
+        Dim q As Integer = 0 'used to determine which step we are on
+        Dim numberofcolums As Integer = Math.Ceiling(Len(input) / numberofrows)
+        For i = 0 To numberofcolums - 1
+            For z = 0 To Len(input) / 2
+                Try
+                    final = final & inputc(x)
+
+                    x += numberofcolums
+                Catch
+
+                End Try
+            Next
+            q += 1
+            x = q
+        Next
+        MsgBox(final)
+    End Function
+
     Private Function railfenceencrypt(input As String, numberofrows As Integer)
         Dim inputc As Char() = input.ToCharArray()
         Dim holderqueue(numberofrows - 1)
@@ -330,25 +353,41 @@
         For i = 0 To numberofrows - 1
             holderqueue(i) = ""
         Next
-        For Each ch As Char In inputc
-
-            If x = numberofrows - 1 Then
-                holderqueue(x) = holderqueue(x) & ch
-                x = 0
-            Else
-                holderqueue(x) = holderqueue(x) & ch
-                x += 1
-
-            End If
+        For i = 0 To Math.Ceiling(Len(input) / numberofrows) - 1
+            MsgBox(i)
+            For r = 0 To Math.Floor(Len(input) / numberofrows) - 1
+                'MsgBox(Len(input / numberofrows))
+                MsgBox(r)
+                final = final & input(0 + (r * numberofrows))
+            Next
         Next
-        For i = 0 To numberofrows - 1
-            final = final & holderqueue(i)
-        Next
+
+        'For Each ch As Char In inputc
+
+        '    If x = numberofrows - 1 Then
+        '        x = 0
+
+        '        holderqueue(x) = holderqueue(x) & ch
+        '        'MsgBox(holderqueue(x))
+        '    Else
+        '        holderqueue(x) = holderqueue(x) & ch
+        '        x += 1
+        '        'MsgBox(holderqueue(x))
+        '    End If
+        'Next
+        'For i = 0 To numberofrows - 1
+        '    MsgBox(holderqueue(i))
+        '    final = final & holderqueue(i)
+        'Next
         Return final
         ' Return pasA & pasB
     End Function
     Private Sub railfencego_Click(sender As Object, e As EventArgs) Handles railfencego.Click
-        textdisplay.Text = railfenceencrypt(completefile.Where(Function(x) Not Char.IsWhiteSpace(x)).ToArray(), Button4.Text)
+        If TheCCeaserloader.returndore = True Then
+            textdisplay.Text = railfenceencrypt(completefile.Where(Function(x) Not Char.IsWhiteSpace(x)).ToArray(), Button4.Text)
+        Else
+            textdisplay.Text = railfencedecrypt(completefile.Where(Function(x) Not Char.IsWhiteSpace(x)).ToArray(), Button4.Text)
+        End If
 
     End Sub
 
