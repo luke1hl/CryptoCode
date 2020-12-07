@@ -30,6 +30,7 @@ Partial Class FileEncrypterMenu
         Me.Decrypt = New System.Windows.Forms.Button()
         Me.ok = New System.Windows.Forms.Button()
         Me.Enigma = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.Title2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Title, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -38,7 +39,7 @@ Partial Class FileEncrypterMenu
         '
         Me.ceaser.BackColor = System.Drawing.Color.MediumBlue
         Me.ceaser.ForeColor = System.Drawing.Color.White
-        Me.ceaser.Location = New System.Drawing.Point(48, 127)
+        Me.ceaser.Location = New System.Drawing.Point(95, 127)
         Me.ceaser.Name = "ceaser"
         Me.ceaser.Size = New System.Drawing.Size(108, 53)
         Me.ceaser.TabIndex = 1
@@ -49,7 +50,7 @@ Partial Class FileEncrypterMenu
         '
         Me.vernam.BackColor = System.Drawing.Color.MediumBlue
         Me.vernam.ForeColor = System.Drawing.Color.White
-        Me.vernam.Location = New System.Drawing.Point(188, 127)
+        Me.vernam.Location = New System.Drawing.Point(243, 127)
         Me.vernam.Name = "vernam"
         Me.vernam.Size = New System.Drawing.Size(108, 53)
         Me.vernam.TabIndex = 2
@@ -111,18 +112,30 @@ Partial Class FileEncrypterMenu
         '
         Me.Enigma.BackColor = System.Drawing.Color.MediumBlue
         Me.Enigma.ForeColor = System.Drawing.Color.White
-        Me.Enigma.Location = New System.Drawing.Point(343, 127)
+        Me.Enigma.Location = New System.Drawing.Point(450, 127)
         Me.Enigma.Name = "Enigma"
         Me.Enigma.Size = New System.Drawing.Size(108, 53)
         Me.Enigma.TabIndex = 7
         Me.Enigma.Text = "Enigma"
         Me.Enigma.UseVisualStyleBackColor = False
         '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.MediumBlue
+        Me.Button1.ForeColor = System.Drawing.Color.White
+        Me.Button1.Location = New System.Drawing.Point(584, 127)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(108, 53)
+        Me.Button1.TabIndex = 8
+        Me.Button1.Text = "Railfence"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
         'FileEncrypterMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Enigma)
         Me.Controls.Add(Me.ok)
         Me.Controls.Add(Me.Decrypt)
@@ -150,4 +163,5 @@ Partial Class FileEncrypterMenu
     Friend WithEvents Decrypt As Button
     Friend WithEvents ok As Button
     Friend WithEvents Enigma As Button
+    Friend WithEvents Button1 As Button
 End Class
