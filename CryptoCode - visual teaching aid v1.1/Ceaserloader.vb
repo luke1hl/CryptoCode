@@ -322,6 +322,50 @@
         frequencyanalysis(textdisplay.Text)
 
     End Sub
+    Private Function railfenceencrypt(input As String, numberofrows As Integer)
+        Dim inputc As Char() = input.ToCharArray()
+        Dim holderqueue As Queue(Of String) = New Queue(Of String)
+        Dim x As Integer = 1
+        Dim final As String = ""
+        For i = 0 To numberofrows - 1
+            holderqueue(i) = ""
+        Next
+        For Each ch As Char In inputc
 
+            If x = numberofrows Then
+                holderqueue(x) = holderqueue(x) & ch
+                x = 1
+            Else
+                holderqueue(x) = holderqueue(x) & ch
+                x += 1
 
+            End If
+        Next
+        For i = 0 To numberofrows
+            final = final & holderqueue(i)
+        Next
+        Return final
+        ' Return pasA & pasB
+    End Function
+    Private Sub railfencego_Click(sender As Object, e As EventArgs) Handles railfencego.Click
+        textdisplay.Text = railfenceencrypt(completefile.Where(Function(x) Not Char.IsWhiteSpace(x)).ToArray(), Button4.Text)
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        If Button4.Text > 2 Then
+            Button4.Text -= 1
+
+        End If
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        If Button4.Text < 7 Then
+            Button4.Text += 1
+
+        End If
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+
+    End Sub
 End Class
