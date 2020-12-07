@@ -43,6 +43,10 @@ Partial Class Ceaserloader
         Me.enigmade = New System.Windows.Forms.Button()
         Me.Typedchar = New System.Windows.Forms.TextBox()
         Me.Cypherbox = New System.Windows.Forms.TextBox()
+        Me.railfencego = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.Ceaserpanel.SuspendLayout()
         Me.vernampanel.SuspendLayout()
         Me.SuspendLayout()
@@ -221,12 +225,52 @@ Partial Class Ceaserloader
         Me.Cypherbox.TabIndex = 13
         Me.Cypherbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'railfencego
+        '
+        Me.railfencego.Location = New System.Drawing.Point(847, 161)
+        Me.railfencego.Name = "railfencego"
+        Me.railfencego.Size = New System.Drawing.Size(116, 73)
+        Me.railfencego.TabIndex = 14
+        Me.railfencego.Text = "Push to encrypt/decrypt"
+        Me.railfencego.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(928, 240)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(35, 35)
+        Me.Button2.TabIndex = 15
+        Me.Button2.Text = "+"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(847, 240)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(35, 35)
+        Me.Button3.TabIndex = 16
+        Me.Button3.Text = "-"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(888, 240)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(35, 35)
+        Me.Button4.TabIndex = 17
+        Me.Button4.Text = "2"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'Ceaserloader
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1017, 450)
+        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.railfencego)
         Me.Controls.Add(Me.Cypherbox)
         Me.Controls.Add(Me.Typedchar)
         Me.Controls.Add(Me.enigmade)
@@ -271,4 +315,8 @@ Partial Class Ceaserloader
     Friend WithEvents enigmade As Button
     Friend WithEvents Typedchar As TextBox
     Friend WithEvents Cypherbox As TextBox
+    Friend WithEvents railfencego As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Button4 As Button
 End Class
