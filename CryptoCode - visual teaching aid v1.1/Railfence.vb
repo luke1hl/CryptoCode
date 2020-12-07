@@ -13,6 +13,15 @@
         xsix = lettersix.Location.X
         xseven = letterseven.Location.X
         xeight = lettereight.Location.X
+
+        letterone.Enabled = False
+        lettertwo.Enabled = False
+        letterthree.Enabled = False
+        letterfour.Enabled = False
+        letterfive.Enabled = False
+        lettersix.Enabled = False
+        letterseven.Enabled = False
+        lettereight.Enabled = False
     End Sub
     Dim xone As Integer
     Dim xtwo As Integer
@@ -74,179 +83,264 @@
 
         For i = 0 To 70
             lettertwo.Top += 1
+            Refresh()
+
         Next
         For i = 0 To 70
             letterfour.Top += 1
+            Refresh()
+
         Next
         For i = 0 To 70
             lettersix.Top += 1
+            Refresh()
+
         Next
         For i = 0 To 70
             lettereight.Top += 1
+            Refresh()
+
         Next
         Threading.Thread.Sleep(1000)
 
         While letterthree.Location.X <> xtwo
             letterthree.Left -= 1
+            Refresh()
+
         End While
         ' MsgBox("")
 
         While letterfive.Location.X <> xthree
             letterfive.Left -= 1
+            Refresh()
+
         End While
         While letterseven.Location.X <> xfour
             letterseven.Left -= 1
+            Refresh()
+
         End While
         Threading.Thread.Sleep(1000)
 
 
         While lettertwo.Location.X <> xfive
             lettertwo.Left += 1
+            Refresh()
+
         End While
         While letterfour.Location.X <> xsix
             letterfour.Left += 1
+            Refresh()
+
         End While
         While lettersix.Location.X <> xseven
             lettersix.Left += 1
+            Refresh()
+
         End While
         ' Threading.Thread.Sleep(1000)
         For i = 0 To 70
             lettertwo.Top -= 1
+            Refresh()
+
         Next
         For i = 0 To 70
             letterfour.Top -= 1
+            Refresh()
+
         Next
         For i = 0 To 70
             lettersix.Top -= 1
+            Refresh()
+
         Next
         For i = 0 To 70
             lettereight.Top -= 1
+            Refresh()
+
         Next
     End Sub
     Private Sub movestuffthree()
         For i = 0 To 70
             lettertwo.Top += 1
+            Refresh()
         Next
         For i = 0 To 140
             letterthree.Top += 1
+            Refresh()
+
         Next
         For i = 0 To 70
             letterfive.Top += 1
+            Refresh()
+
         Next
         For i = 0 To 140
             lettersix.Top += 1
+            Refresh()
+
         Next
         For i = 0 To 70
             lettereight.Top += 1
+            Refresh()
+
         Next
         Threading.Thread.Sleep(1000)
         While letterfour.Location.X <> xtwo
             letterfour.Left -= 1
+            Refresh()
         End While
         While letterseven.Location.X <> xthree
             letterseven.Left -= 1
+            Refresh()
         End While
         While lettereight.Location.X <> xsix
             lettereight.Left -= 1
+            Refresh()
         End While
 
         Threading.Thread.Sleep(1000)
         While lettertwo.Location.X <> xfour
             lettertwo.Left += 1
+            Refresh()
         End While
         While letterfive.Location.X <> xfive
             lettersix.Left -= 1
-
+            Refresh()
         End While
         Threading.Thread.Sleep(1000)
         While letterthree.Location.X <> xseven
             letterthree.Left += 1
-
+            Refresh()
         End While
         While lettersix.Location.X <> xeight
             lettersix.Left += 1
+            Refresh()
 
         End While
         Threading.Thread.Sleep(1000)
         For i = 0 To 70
             lettertwo.Top -= 1
+            Refresh()
+
         Next
         For i = 0 To 140
             letterthree.Top -= 1
+            Refresh()
+
         Next
         For i = 0 To 70
             letterfive.Top -= 1
+            Refresh()
+
         Next
         For i = 0 To 140
             lettersix.Top -= 1
+            Refresh()
+
         Next
         For i = 0 To 70
             lettereight.Top -= 1
+            Refresh()
+
         Next
     End Sub
     Private Sub movestufffour()
         For i = 0 To 70
             lettertwo.Top += 1
+            Refresh()
+
         Next
         For i = 0 To 140
             letterthree.Top += 1
+            Refresh()
+
         Next
         For i = 0 To 210
             letterfour.Top += 1
+            Refresh()
+
         Next
         For i = 0 To 70
             lettersix.Top += 1
+            Refresh()
+
         Next
         For i = 0 To 140
             letterseven.Top += 1
+            Refresh()
+
         Next
         For i = 0 To 210
             lettereight.Top += 1
+            Refresh()
+
         Next
         Threading.Thread.Sleep(1000)
 
         While letterfive.Location.X <> xtwo
             letterfive.Left -= 1
+            Refresh()
+
         End While
         Threading.Thread.Sleep(1000)
         'two to three and six to four
         While lettertwo.Location.X <> xthree
             lettertwo.Left += 1
+            Refresh()
+
         End While
         While lettersix.Location.X <> xfour
             lettersix.Left -= 1
+            Refresh()
 
         End While
         'three to five and seven to six
         While letterthree.Location.X <> xfive
             letterthree.Left += 1
+            Refresh()
 
         End While
         While letterseven.Location.X <> xsix
             letterseven.Left -= 1
+            Refresh()
 
         End While
         While letterfour.Location.X <> xseven
             letterfour.Left += 1
+            Refresh()
+
         End While
         Threading.Thread.Sleep(1000)
         For i = 0 To 70
             lettertwo.Top -= 1
+            Refresh()
+
         Next
         For i = 0 To 140
             letterthree.Top -= 1
+            Refresh()
+
         Next
         For i = 0 To 210
             letterfour.Top -= 1
+            Refresh()
+
         Next
         For i = 0 To 70
             lettersix.Top -= 1
+            Refresh()
+
         Next
         For i = 0 To 140
             letterseven.Top -= 1
+            Refresh()
+
         Next
         For i = 0 To 210
             lettereight.Top -= 1
+            Refresh()
+
         Next
 
     End Sub

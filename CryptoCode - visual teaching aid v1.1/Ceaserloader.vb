@@ -324,24 +324,24 @@
     End Sub
     Private Function railfenceencrypt(input As String, numberofrows As Integer)
         Dim inputc As Char() = input.ToCharArray()
-        Dim holderqueue As Queue(Of String) = New Queue(Of String)
-        Dim x As Integer = 1
+        Dim holderqueue(numberofrows - 1)
+        Dim x As Integer = 0
         Dim final As String = ""
         For i = 0 To numberofrows - 1
             holderqueue(i) = ""
         Next
         For Each ch As Char In inputc
 
-            If x = numberofrows Then
+            If x = numberofrows - 1 Then
                 holderqueue(x) = holderqueue(x) & ch
-                x = 1
+                x = 0
             Else
                 holderqueue(x) = holderqueue(x) & ch
                 x += 1
 
             End If
         Next
-        For i = 0 To numberofrows
+        For i = 0 To numberofrows - 1
             final = final & holderqueue(i)
         Next
         Return final
@@ -349,6 +349,7 @@
     End Function
     Private Sub railfencego_Click(sender As Object, e As EventArgs) Handles railfencego.Click
         textdisplay.Text = railfenceencrypt(completefile.Where(Function(x) Not Char.IsWhiteSpace(x)).ToArray(), Button4.Text)
+
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
