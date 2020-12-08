@@ -28,7 +28,8 @@
         Select Case OpenFileDialog1.ShowDialog()
             Case DialogResult.OK
                 filePath = OpenFileDialog1.FileName
-                caesar.ceasercypher(My.Computer.FileSystem.ReadAllText(filePath), textdisplay, 0)
+                textdisplay.Text = My.Computer.FileSystem.ReadAllText(filePath)
+                'caesar.ceasercypher(My.Computer.FileSystem.ReadAllText(filePath), textdisplay, 0)
             Case Else
         End Select
 
@@ -37,19 +38,21 @@
         'completefile = completefile & textdisplay.Text(i)
         '    Next
         'End If
-
+        ' If railfencego.Visible = False Then
         If TheCCeaserloader.returndore = True Then
-            'MsgBox("got it")
-            completefile = completefile.Where(Function(x) Not Char.IsWhiteSpace(x)).ToArray()
-            textdisplay.Text = completefile
-            'MsgBox(completefile)
-            percentage.Maximum = Len(completefile)
-        ElseIf TheCCeaserloader.returndore = False And vernampanel.Visible = True Then
-            ' MsgBox("recived")
-            completefile = My.Computer.FileSystem.ReadAllText(filePath)
-            textdisplay.Text = completefile
-            percentage.Maximum = Len(completefile)
-        End If
+                'MsgBox("got it")
+                completefile = completefile.Where(Function(x) Not Char.IsWhiteSpace(x)).ToArray()
+                textdisplay.Text = completefile
+                'MsgBox(completefile)
+                percentage.Maximum = Len(completefile)
+            ElseIf TheCCeaserloader.returndore = False And vernampanel.Visible = True Then
+                ' MsgBox("recived")
+                completefile = My.Computer.FileSystem.ReadAllText(filePath)
+                textdisplay.Text = completefile
+                percentage.Maximum = Len(completefile)
+            End If
+        ' End If
+
         frequencyanalysis(textdisplay.Text)
     End Sub
 
@@ -323,42 +326,34 @@
 
     End Sub
     Private Function railfencedecrypt(input As String, numberofrows As Integer)
-        Dim inputc As Char() = input.ToCharArray()
-        Dim holderqueue(numberofrows - 1)
         Dim final As String = ""
-        Dim x As Integer = 0
-        Dim q As Integer = 0 'used to determine which step we are on
-        Dim numberofcolums As Integer = Math.Ceiling(Len(input) / numberofrows)
-        For i = 0 To numberofcolums - 1
-            For z = 0 To Len(input) / 2
-                Try
-                    final = final & inputc(x)
+        ' MsgBox(Len(input))
+        Dim nocols As Integer = Math.Ceiling(Len(input) / numberofrows)
+        '  MsgBox(nocols)
+        For i = 0 To nocols - 1
+            For r = i To Len(input) Step nocols
+                ' MsgBox(r & " " & input(r))
+                If r < Len(input) Then
+                    If input(r) <> "℗" Then
+                        final = final & input(r)
 
-                    x += numberofcolums
-                Catch
-
-                End Try
+                    End If
+                End If
             Next
-            q += 1
-            x = q
         Next
-        MsgBox(final)
+        Return final
     End Function
 
     Private Function railfenceencrypt(input As String, numberofrows As Integer)
-        Dim inputc As Char() = input.ToCharArray()
-        Dim holderqueue(numberofrows - 1)
-        Dim x As Integer = 0
         Dim final As String = ""
+
         For i = 0 To numberofrows - 1
-            holderqueue(i) = ""
-        Next
-        For i = 0 To Math.Ceiling(Len(input) / numberofrows) - 1
-            MsgBox(i)
-            For r = 0 To Math.Floor(Len(input) / numberofrows) - 1
-                'MsgBox(Len(input / numberofrows))
-                MsgBox(r)
-                final = final & input(0 + (r * numberofrows))
+            For r = i To Len(input) Step numberofrows
+                If r < Len(input) Then
+                    final = final & input(r)
+                Else
+                    final = final & "℗"
+                End If
             Next
         Next
 
@@ -380,15 +375,15 @@
         '    final = final & holderqueue(i)
         'Next
         Return final
-        ' Return pasA & pasB
     End Function
     Private Sub railfencego_Click(sender As Object, e As EventArgs) Handles railfencego.Click
         If TheCCeaserloader.returndore = True Then
-            textdisplay.Text = railfenceencrypt(completefile.Where(Function(x) Not Char.IsWhiteSpace(x)).ToArray(), Button4.Text)
+            textdisplay.Text = railfenceencrypt(completefile, Button4.Text)
         Else
-            textdisplay.Text = railfencedecrypt(completefile.Where(Function(x) Not Char.IsWhiteSpace(x)).ToArray(), Button4.Text)
+            'MsgBox(Len(completefile))
+            textdisplay.Text = railfencedecrypt(completefile, Button4.Text)
         End If
-
+        frequencyanalysis(textdisplay.Text)
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
