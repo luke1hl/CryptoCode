@@ -130,6 +130,12 @@
     <Compile Include="Railfence.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="recallgame.Designer.vb">
+      <DependentUpon>recallgame.vb</DependentUpon>
+    </Compile>
+    <Compile Include="recallgame.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Selector.vb" />
     <Compile Include="Vernam.Designer.vb">
       <DependentUpon>Vernam.vb</DependentUpon>
@@ -163,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Railfence.resx">
       <DependentUpon>Railfence.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="recallgame.resx">
+      <DependentUpon>recallgame.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vernam.resx">
       <DependentUpon>Vernam.vb</DependentUpon>

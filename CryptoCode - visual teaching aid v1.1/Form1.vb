@@ -46,7 +46,9 @@
             fileencrypter.Show()
             Me.Close()
         ElseIf selector.returnselect() = 5 Then
-
+            Dim game As New recallgame
+            game.Show()
+            Me.Close()
         End If
     End Sub
 
