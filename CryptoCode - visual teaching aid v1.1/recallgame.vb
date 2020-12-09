@@ -1,6 +1,8 @@
 ﻿Public Class recallgame
     Dim cencrypt As cEncryption
-    Dim typesofencryption = New String() {"ceaser", "Enigma", "vernam", "railfence"}
+    Dim railfenceclass As railfenceclass
+    Dim typesofencryption = New String() {"Ceaser", "Enigma", "Vernam", "Railfence"}
+    Dim currentcorrect As Integer
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim menu As New Form1
         menu.Show()
@@ -33,20 +35,40 @@
             lines.Add(ioFile.ReadLine())
         End While
         line = rnd.Next(lines.Count + 1)
-        MsgBox(lines(line).Trim())
         ioFile.Close()
         ioFile.Dispose()
+        Return lines(line).Trim()
+
     End Function
     Private Sub createquestionone()
-        '  Dim wordtoencrypt As String = My.Computer.FileSystem.ReadAllText()
-        Dim correctanswer As Integer = cencrypt.returnrandomnumber(1, 4)
-        Dim typeofencryption As String = typesofencryption(cencrypt.returnrandomnumber(1, 4))
-        If typeofencryption = "ceaser" Then
+        Dim wordtoencrypt As String = pickrandomword()
+        Dim key As Integer = cencrypt.returnrandomnumber(1, 4)
+        currentcorrect = cencrypt.returnrandomnumber(1, 4)
+        Dim typeofencryption As String = typesofencryption(currentcorrect)
+        Dim encryptedword As String = ""
+        If typeofencryption = "Ceaser" Then
+            ' vbLf is the multiline charcter
+            'encryptedword = 
+        ElseIf typeofencryption = "Enigma" Then
+
+        ElseIf typeofencryption = "Vernam" Then
+
+        ElseIf typeofencryption = "Railfence" Then
+            encryptedword = railfenceclass.railfenceencrypt(wordtoencrypt, key)
 
         End If
+        questionbox.Text = "what kind of encryption does this look like?
+
+" & encryptedword
+        Optionbox.Text = (" 1. Ceaser
+2.Enigma
+3.Vernam
+4.Railfence")
     End Sub
     Private Sub recallgame_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        pickrandomword()
+        Me.FormBorderStyle = FormBorderStyle.FixedSingle
+
+        createquestionone()
     End Sub
 
     Private Sub newquestion_Click(sender As Object, e As EventArgs) Handles newquestion.Click

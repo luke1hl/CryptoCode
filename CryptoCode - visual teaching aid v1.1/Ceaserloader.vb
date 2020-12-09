@@ -15,6 +15,7 @@
     Dim visualveratext As String
     Dim percentagev As Integer = 0
     Dim threadover As Boolean = False
+    Dim railfenceclasser As railfenceclass
     '   Private type As New String
     Private Sub Ceaserloader_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         enigmac.predefinealphabets()
@@ -325,63 +326,15 @@
         frequencyanalysis(textdisplay.Text)
 
     End Sub
-    Private Function railfencedecrypt(input As String, numberofrows As Integer)
-        Dim final As String = ""
-        ' MsgBox(Len(input))
-        Dim nocols As Integer = Math.Ceiling(Len(input) / numberofrows)
-        '  MsgBox(nocols)
-        For i = 0 To nocols - 1
-            For r = i To Len(input) Step nocols
-                ' MsgBox(r & " " & input(r))
-                If r < Len(input) Then
-                    If input(r) <> "℗" Then
-                        final = final & input(r)
 
-                    End If
-                End If
-            Next
-        Next
-        Return final
-    End Function
 
-    Private Function railfenceencrypt(input As String, numberofrows As Integer)
-        Dim final As String = ""
 
-        For i = 0 To numberofrows - 1
-            For r = i To Len(input) Step numberofrows
-                If r < Len(input) Then
-                    final = final & input(r)
-                Else
-                    final = final & "℗"
-                End If
-            Next
-        Next
-
-        'For Each ch As Char In inputc
-
-        '    If x = numberofrows - 1 Then
-        '        x = 0
-
-        '        holderqueue(x) = holderqueue(x) & ch
-        '        'MsgBox(holderqueue(x))
-        '    Else
-        '        holderqueue(x) = holderqueue(x) & ch
-        '        x += 1
-        '        'MsgBox(holderqueue(x))
-        '    End If
-        'Next
-        'For i = 0 To numberofrows - 1
-        '    MsgBox(holderqueue(i))
-        '    final = final & holderqueue(i)
-        'Next
-        Return final
-    End Function
     Private Sub railfencego_Click(sender As Object, e As EventArgs) Handles railfencego.Click
         If TheCCeaserloader.returndore = True Then
-            textdisplay.Text = railfenceencrypt(completefile, Button4.Text)
+            textdisplay.Text = railfenceclasser.railfenceencrypt(completefile, Button4.Text)
         Else
             'MsgBox(Len(completefile))
-            textdisplay.Text = railfencedecrypt(completefile, Button4.Text)
+            textdisplay.Text = railfenceclasser.railfencedecrypt(completefile, Button4.Text)
         End If
         frequencyanalysis(textdisplay.Text)
     End Sub

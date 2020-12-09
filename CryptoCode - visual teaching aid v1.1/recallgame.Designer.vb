@@ -119,7 +119,10 @@ Partial Class recallgame
         Me.Controls.Add(Me.Answerthree)
         Me.Controls.Add(Me.answerfour)
         Me.Controls.Add(Me.answerone)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "recallgame"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "recallgame"
         Me.ResumeLayout(False)
         Me.PerformLayout()

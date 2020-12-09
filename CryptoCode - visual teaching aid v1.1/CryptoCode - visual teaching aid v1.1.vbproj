@@ -130,6 +130,7 @@
     <Compile Include="Railfence.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="railfenceclass.vb" />
     <Compile Include="recallgame.Designer.vb">
       <DependentUpon>recallgame.vb</DependentUpon>
     </Compile>
