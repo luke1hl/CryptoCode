@@ -27,7 +27,7 @@
 
     End Function
     Function pickrandomword()
-        Dim ioFile As New System.IO.StreamReader("D:\Visual basic code\CryptoCode\CryptoCode - visual teaching aid v1.1\Collins Scrabble Words (2019).txt")
+        Dim ioFile As New System.IO.StreamReader("Z:\visual basic coding\CryptoCode\CryptoCode\CryptoCode - visual teaching aid v1.1\Resources\Collins Scrabble Words (2019).txt")
         Dim lines As New List(Of String)
         Dim rnd As New Random()
         Dim line As Integer
@@ -67,8 +67,8 @@
     End Sub
     Private Sub recallgame_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
-
-        createquestionone()
+        MsgBox(pickrandomword())
+        'createquestionone()
     End Sub
 
     Private Sub newquestion_Click(sender As Object, e As EventArgs) Handles newquestion.Click

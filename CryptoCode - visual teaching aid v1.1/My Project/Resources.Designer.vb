@@ -101,6 +101,70 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Collins Scrabble Words (2019). 279,496 words. Words only.
+        '''
+        '''AA
+        '''AAH
+        '''AAHED
+        '''AAHING
+        '''AAHS
+        '''AAL
+        '''AALII
+        '''AALIIS
+        '''AALS
+        '''AARDVARK
+        '''AARDVARKS
+        '''AARDWOLF
+        '''AARDWOLVES
+        '''AARGH
+        '''AARRGH
+        '''AARRGHH
+        '''AARTI
+        '''AARTIS
+        '''AAS
+        '''AASVOGEL
+        '''AASVOGELS
+        '''AB
+        '''ABA
+        '''ABAC
+        '''ABACA
+        '''ABACAS
+        '''ABACI
+        '''ABACK
+        '''ABACS
+        '''ABACTERIAL
+        '''ABACTINAL
+        '''ABACTINALLY
+        '''ABACTOR
+        '''ABACTORS
+        '''ABACUS
+        '''ABACUSES
+        '''ABAFT
+        '''ABAKA
+        '''ABAKAS
+        '''ABALONE
+        '''ABALONES
+        '''ABAMP
+        '''ABAMPERE
+        '''ABAMPERES
+        '''ABAMPS
+        '''ABAND
+        '''ABANDED
+        '''ABANDING
+        '''ABANDON
+        '''ABANDONED
+        '''ABANDONEDLY
+        '''ABANDONEE
+        '''ABANDONEES
+        '''ABAN [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property Collins_Scrabble_Words__2019_() As String
+            Get
+                Return ResourceManager.GetString("Collins_Scrabble_Words__2019_", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property cryptocodelog() As System.Drawing.Bitmap

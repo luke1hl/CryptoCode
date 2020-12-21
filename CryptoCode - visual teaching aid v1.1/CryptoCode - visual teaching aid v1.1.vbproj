@@ -241,5 +241,8 @@
   <ItemGroup>
     <None Include="Resources\yellow arrow.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Collins Scrabble Words %282019%29.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
