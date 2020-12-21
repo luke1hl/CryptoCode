@@ -43,6 +43,18 @@
         End If
 
     End Sub
+    Function ceasercypheringame(plaintext As String, cypher As Integer)
+        setcyphertext("")
+        cyphercode = cypher
+        Dim holder As Integer
+
+        For i = 0 To Len(plaintext) - 1
+            holder = Asc(plaintext(i))
+            holder += cyphercode
+            setcyphertext(returncyphertext() & " " & Chr(holder))
+        Next
+        Return returncyphertext()
+    End Function
     Sub ceasercypher(plaintext As String, textbox As TextBox, Cypher As Integer) 'cyphers the text
         setcyphertext("")
         cyphercode = Cypher

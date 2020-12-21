@@ -1,8 +1,11 @@
 ﻿Public Class recallgame
-    Dim cencrypt As cEncryption
     Dim railfenceclass As railfenceclass
     Dim typesofencryption = New String() {"Ceaser", "Enigma", "Vernam", "Railfence"}
     Dim currentcorrect As Integer
+    Dim cencryption As New cEncryption
+    Dim engimaclass As New enigmaclass
+    Dim ceaser As New caesar
+    Dim currentgenre As Integer
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim menu As New Form1
         menu.Show()
@@ -10,7 +13,9 @@
     End Sub
 
     Private Sub pickgenre()
-        Dim genrenumber As Integer = cencrypt.returnrandomnumber(1, 5) ' 1. is what type of encryption does this look like  2. what is the most likely encryption 3. what is most likely decryption 4.practice an xor 5.what is the key
+
+        Dim genrenumber As Integer = cencryption.returnrandomnumber(1, 5) ' 1. is what type of encryption does this look like  2. what is the most likely encryption 3. what is most likely decryption 4.practice an xor 5.what is the key
+        currentgenre = genrenumber
         If genrenumber = 1 Then 'type of encryption
 
         ElseIf genrenumber = 2 Then ' what does given word look like when encrypted using 'x' with a key of 'y'
@@ -23,7 +28,7 @@
         End If
     End Sub
     Private Function choosetypeofencryption(max)
-        Return cencrypt.returnrandomnumber(1, max)
+        Return cencryption.returnrandomnumber(1, max)
 
     End Function
     Function pickrandomword()
@@ -46,13 +51,16 @@
     End Function
     Private Sub createquestionone()
         Dim wordtoencrypt As String = pickrandomword()
-        Dim key As Integer = cencrypt.returnrandomnumber(1, 4)
-        currentcorrect = cencrypt.returnrandomnumber(1, 4)
+        Dim key As Integer = cencryption.returnrandomnumber(1, 4)
+        currentcorrect = cencryption.returnrandomnumber(1, 4)
         Dim typeofencryption As String = typesofencryption(currentcorrect)
         Dim encryptedword As String = ""
         If typeofencryption = "Ceaser" Then
+            encryptedword = ceaser.ceasercypheringame(wordtoencrypt, key)
             ' vbLf is the multiline charcter
             'encryptedword = 
+            cypherdislapy.Text = encryptedword
+
         ElseIf typeofencryption = "Enigma" Then
 
         ElseIf typeofencryption = "Vernam" Then
