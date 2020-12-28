@@ -47,6 +47,26 @@
             '  MsgBox(alphathree(i))
         Next
     End Sub
+    Function enigmaencodeforgame(e As Char)
+        Dim characterholder As Char = ""
+        For i = 0 To alphabetqueue.Count - 1
+            If alphabetqueue(i) = e Then
+                characterholder = alphabettwoqueue(i)
+                Exit For
+
+            End If
+        Next
+        For i = 0 To alphabetqueue.Count - 1
+            If alphabetqueue(i) = characterholder Then
+                characterholder = alphabetthreequeue(i)
+
+                Exit For
+
+            End If
+        Next
+        enigmashuffle()
+        Return characterholder
+    End Function
     Function enigmaencode(typedchar As TextBox, e As Char, Cypherbox As TextBox)
         Dim charholder As Char = ""
 
