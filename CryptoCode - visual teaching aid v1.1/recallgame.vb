@@ -72,6 +72,7 @@
             Next
         ElseIf typeofencryption = "Vernam" Then
             Dim extra As String = pickrandomword()
+            MsgBox(wordtoencrypt & " " & extra)
             For i = 0 To Len(wordtoencrypt) - 1
                 encryptedword = encryptedword & vernamcyphers.binarytochar(vernamcyphers.DoanXOR(vernamcyphers.convertcharactertobinary(wordtoencrypt(i)), vernamcyphers.convertcharactertobinary(extra(i))), True)
 
