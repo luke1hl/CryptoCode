@@ -1,5 +1,5 @@
 ﻿Public Class recallgame
-    Dim railfenceclass As railfenceclass
+    Dim railfenceclass As New railfenceclass
     Dim typesofencryption = New String() {"Ceaser", "Enigma", "Vernam", "Railfence"}
     Dim currentcorrect As Integer
     Dim cencryption As New cEncryption
@@ -17,6 +17,7 @@
 
         Dim genrenumber As Integer = cencryption.returnrandomnumber(1, 5) ' 1. is what type of encryption does this look like  2. what is the most likely encryption 3. what is most likely decryption 4.practice an xor 5.what is the key
         currentgenre = genrenumber
+        genrenumber = 1
         If genrenumber = 1 Then 'type of encryption
             createquestionone()
         ElseIf genrenumber = 2 Then ' what does given word look like when encrypted using 'x' with a key of 'y'
@@ -50,14 +51,17 @@
         Return lines(line).Trim()
 
     End Function
+    Private Sub createquestiontwo()
+        Dim oneortheother
+    End Sub
     Private Sub createquestionone()
         Dim wordtoencrypt As String = pickrandomword()
-        Dim key As Integer = cencryption.returnrandomnumber(1, 4)
+        Dim key As Integer = cencryption.returnrandomnumber(3, 6)
         currentcorrect = cencryption.returnrandomnumber(1, 4)
         Dim typeofencryption As String = typesofencryption(currentcorrect - 1)
         Dim encryptedword As String = ""
-        typeofencryption = "Vernam"
-        currentcorrect = 3
+        ' typeofencryption = "Railfence"
+        ' currentcorrect = 4
         If typeofencryption = "Ceaser" Then
             encryptedword = ceaser.ceasercypheringame(wordtoencrypt, key)
             ' vbLf is the multiline charcter
@@ -72,14 +76,17 @@
             Next
         ElseIf typeofencryption = "Vernam" Then
             Dim extra As String = pickrandomword()
-            MsgBox(wordtoencrypt & " " & extra)
+            extra = extra & pickrandomword()
+            extra = extra.Substring(0, extra.Length - (Len(extra) - Len(wordtoencrypt)))
+            MsgBox(extra)
             For i = 0 To Len(wordtoencrypt) - 1
                 encryptedword = encryptedword & vernamcyphers.binarytochar(vernamcyphers.DoanXOR(vernamcyphers.convertcharactertobinary(wordtoencrypt(i)), vernamcyphers.convertcharactertobinary(extra(i))), True)
 
             Next
         ElseIf typeofencryption = "Railfence" Then
+            MsgBox(wordtoencrypt)
             encryptedword = railfenceclass.railfenceencrypt(wordtoencrypt, key)
-
+            encryptedword = encryptedword.Replace("℗", "")
         End If
         questionbox.Text = "what kind of encryption does this look like?
 
@@ -106,7 +113,7 @@
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
         disablebuttons()
         ' MsgBox(pickrandomword())
-        createquestionone()
+        pickgenre()
     End Sub
 
     Private Sub newquestion_Click(sender As Object, e As EventArgs) Handles newquestion.Click
