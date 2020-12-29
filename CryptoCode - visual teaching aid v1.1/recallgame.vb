@@ -17,11 +17,11 @@
 
         Dim genrenumber As Integer = cencryption.returnrandomnumber(1, 5) ' 1. is what type of encryption does this look like  2. what is the most likely encryption 3. what is most likely decryption 4.practice an xor 5.what is the key
         currentgenre = genrenumber
-        genrenumber = 1
+        genrenumber = 2
         If genrenumber = 1 Then 'type of encryption
             createquestionone()
         ElseIf genrenumber = 2 Then ' what does given word look like when encrypted using 'x' with a key of 'y'
-
+            createquestiontwo()
         ElseIf genrenumber = 3 Then 'what is the most likely decryption of a encrypted word using 'x' with a key of 'y'
 
         ElseIf genrenumber = 4 Then 'practice XOR question
@@ -51,8 +51,59 @@
         Return lines(line).Trim()
 
     End Function
+
+    Private rnd As New Random()
+
+    Private Sub Shuffle(items As String())
+        Dim j As Int32
+        Dim temp As String
+
+        For n As Int32 = items.Length - 1 To 0 Step -1
+            j = Rnd.Next(0, n + 1)
+            ' Swap them.
+            temp = items(n)
+            items(n) = items(j)
+            items(j) = temp
+        Next n
+    End Sub
     Private Sub createquestiontwo()
-        Dim oneortheother
+        Dim wordtoencrypt As String = pickrandomword()
+        Dim listofpossibleanswer(3) As String
+
+        Dim typeofs As String = ""
+        Dim encryptedword As String = ""
+        Dim oneortheother As Integer = cencryption.returnrandomnumber(1, 2)
+        Dim keya As Integer = cencryption.returnrandomnumber(-8, 10)
+        Dim keyb As Integer = cencryption.returnrandomnumber(2, 6)
+        If oneortheother = 1 Then
+            encryptedword = ceaser.ceasercypheringame(wordtoencrypt, keya)
+            typeofs = "ceaser cypher"
+        Else
+            encryptedword = railfenceclass.railfenceencrypt(wordtoencrypt, keyb)
+            encryptedword = encryptedword.Replace("℗", "")
+            typeofs = "Railfence Encryption"
+
+        End If
+        listofpossibleanswer(1) = ceaser.ceasercypheringame(pickrandomword(), keya)
+        listofpossibleanswer(0) = railfenceclass.railfencedecrypt(pickrandomword(), keyb)
+        listofpossibleanswer(2) = cencryption.Scramble(encryptedword)
+        listofpossibleanswer(3) = encryptedword
+
+        Shuffle(listofpossibleanswer)
+        For i = 0 To 3
+            If listofpossibleanswer(i) = encryptedword Then
+                currentcorrect = i + 1
+                enablebuttons()
+                Exit For
+            End If
+        Next
+
+        questionbox.Text = "what would the encryption of " & wordtoencrypt & " be when using " & typeofs & "?"
+        Optionbox.Text = ("1. " & listofpossibleanswer(0) & "
+2. " & listofpossibleanswer(1) & "
+3. " & listofpossibleanswer(2) & "
+4. " & listofpossibleanswer(3))
+
     End Sub
     Private Sub createquestionone()
         Dim wordtoencrypt As String = pickrandomword()
@@ -84,7 +135,7 @@
 
             Next
         ElseIf typeofencryption = "Railfence" Then
-            MsgBox(wordtoencrypt)
+            ' MsgBox(wordtoencrypt)
             encryptedword = railfenceclass.railfenceencrypt(wordtoencrypt, key)
             encryptedword = encryptedword.Replace("℗", "")
         End If

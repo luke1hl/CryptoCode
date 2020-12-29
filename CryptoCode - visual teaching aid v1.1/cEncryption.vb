@@ -179,6 +179,10 @@
             Return output
         End If
     End Function
+    Function Scramble(ByVal phrase As String) As String
+        Static rand As New Random()
+        Return New String(phrase.ToLower.ToCharArray.OrderBy(Function(r) rand.Next).ToArray)
+    End Function
     Sub limitstring(plaintext As String, textbox As TextBox, length As Integer) 'stops the string from being longer than ten charcters so it dosen't go out of the textbox
         If Len(plaintext) > length Then
             textbox.Text = plaintext.Substring(0, plaintext.Length - 1) 'snips off the last character
