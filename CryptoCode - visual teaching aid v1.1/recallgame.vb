@@ -17,16 +17,17 @@
 
         Dim genrenumber As Integer = cencryption.returnrandomnumber(1, 5) ' 1. is what type of encryption does this look like  2. what is the most likely encryption 3. what is most likely decryption 4.practice an xor 5.what is the key
         currentgenre = genrenumber
-        genrenumber = 2
+        genrenumber = 4
         If genrenumber = 1 Then 'type of encryption
             createquestionone()
         ElseIf genrenumber = 2 Then ' what does given word look like when encrypted using 'x' with a key of 'y'
             createquestiontwo()
         ElseIf genrenumber = 3 Then 'what is the most likely decryption of a encrypted word using 'x' with a key of 'y'
-
+            createquestionthree()
         ElseIf genrenumber = 4 Then 'practice XOR question
-
+            createquestionfour()
         ElseIf genrenumber = 5 Then 'what is the key for either railfence or ceaser
+
         End If
     End Sub
     Private Function choosetypeofencryption(max)
@@ -51,7 +52,15 @@
         Return lines(line).Trim()
 
     End Function
+    Private Function generaterandombinarynumber()
+        Dim binarystring As String = ""
+        For i = 0 To 7
+            Dim oneorzero As Integer = cencryption.returnrandomnumber(1, 1000)
+            binarystring = binarystring & oneorzero Mod 2
 
+        Next
+        Return binarystring
+    End Function
     Private rnd As New Random()
 
     Private Sub Shuffle(items As String())
@@ -65,6 +74,72 @@
             items(n) = items(j)
             items(j) = temp
         Next n
+    End Sub
+    Private Sub createquestionfour()
+        Dim listofpossibleanswer(3) As String
+        Dim binaryone As String = generaterandombinarynumber()
+        Dim binarytwo As String = generaterandombinarynumber()
+        Dim xoredstring As String = cencryption.DoanXOR(binaryone, binarytwo)
+        listofpossibleanswer(1) = xoredstring
+        listofpossibleanswer(0) = generaterandombinarynumber()
+        listofpossibleanswer(2) = generaterandombinarynumber()
+        listofpossibleanswer(3) = generaterandombinarynumber()
+        For i = 0 To cencryption.returnrandomnumber(1, 200)
+            Shuffle(listofpossibleanswer)
+
+        Next
+        For i = 0 To 3
+            If listofpossibleanswer(i) = xoredstring Then
+                currentcorrect = i + 1
+                enablebuttons()
+                Exit For
+            End If
+        Next
+        questionbox.Text = "what would Xor of " & binaryone & " with " & binarytwo & " be?"
+        Optionbox.Text = ("1. " & listofpossibleanswer(0) & "
+2. " & listofpossibleanswer(1) & "
+3. " & listofpossibleanswer(2) & "
+4. " & listofpossibleanswer(3))
+    End Sub
+    Private Sub createquestionthree()
+        Dim wordtoencrypt As String = pickrandomword()
+        Dim listofpossibleanswer(3) As String
+
+        Dim typeofs As String = ""
+        Dim encryptedword As String = ""
+        Dim oneortheother As Integer = cencryption.returnrandomnumber(1, 2)
+        Dim keya As Integer = cencryption.returnrandomnumber(-8, 10)
+        Dim keyb As Integer = cencryption.returnrandomnumber(2, 6)
+        If oneortheother = 1 Then
+            encryptedword = ceaser.ceasercypheringame(wordtoencrypt, keya)
+            typeofs = "ceaser cypher"
+        Else
+            encryptedword = railfenceclass.railfenceencrypt(wordtoencrypt, keyb)
+            encryptedword = encryptedword.Replace("℗", "")
+            typeofs = "Railfence Encryption"
+
+        End If
+        listofpossibleanswer(1) = pickrandomword()
+        listofpossibleanswer(0) = pickrandomword()
+        listofpossibleanswer(2) = pickrandomword()
+        listofpossibleanswer(3) = wordtoencrypt
+        For i = 0 To cencryption.returnrandomnumber(1, 200)
+            Shuffle(listofpossibleanswer)
+
+        Next
+        For i = 0 To 3
+            If listofpossibleanswer(i) = wordtoencrypt Then
+                currentcorrect = i + 1
+                enablebuttons()
+                Exit For
+            End If
+        Next
+
+        questionbox.Text = "what would the decryption of " & encryptedword & " be when using " & typeofs & "?"
+        Optionbox.Text = ("1. " & listofpossibleanswer(0) & "
+2. " & listofpossibleanswer(1) & "
+3. " & listofpossibleanswer(2) & "
+4. " & listofpossibleanswer(3))
     End Sub
     Private Sub createquestiontwo()
         Dim wordtoencrypt As String = pickrandomword()
@@ -88,8 +163,10 @@
         listofpossibleanswer(0) = railfenceclass.railfencedecrypt(pickrandomword(), keyb)
         listofpossibleanswer(2) = cencryption.Scramble(encryptedword)
         listofpossibleanswer(3) = encryptedword
+        For i = 0 To cencryption.returnrandomnumber(1, 200)
+            Shuffle(listofpossibleanswer)
 
-        Shuffle(listofpossibleanswer)
+        Next
         For i = 0 To 3
             If listofpossibleanswer(i) = encryptedword Then
                 currentcorrect = i + 1
