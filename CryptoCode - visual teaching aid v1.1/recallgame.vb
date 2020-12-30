@@ -14,10 +14,10 @@
     End Sub
 
     Private Sub pickgenre()
-
-        Dim genrenumber As Integer = cencryption.returnrandomnumber(1, 5) ' 1. is what type of encryption does this look like  2. what is the most likely encryption 3. what is most likely decryption 4.practice an xor 5.what is the key
+        Randomize()
+        Dim genrenumber As Integer = cencryption.returnrandomnumber(1, 4) ' 1. is what type of encryption does this look like  2. what is the most likely encryption 3. what is most likely decryption 4.practice an xor 5.what is the key
         currentgenre = genrenumber
-        genrenumber = 4
+        ' genrenumber = 4
         If genrenumber = 1 Then 'type of encryption
             createquestionone()
         ElseIf genrenumber = 2 Then ' what does given word look like when encrypted using 'x' with a key of 'y'
@@ -26,8 +26,6 @@
             createquestionthree()
         ElseIf genrenumber = 4 Then 'practice XOR question
             createquestionfour()
-        ElseIf genrenumber = 5 Then 'what is the key for either railfence or ceaser
-
         End If
     End Sub
     Private Function choosetypeofencryption(max)
@@ -206,7 +204,7 @@
             Dim extra As String = pickrandomword()
             extra = extra & pickrandomword()
             extra = extra.Substring(0, extra.Length - (Len(extra) - Len(wordtoencrypt)))
-            MsgBox(extra)
+            'MsgBox(extra)
             For i = 0 To Len(wordtoencrypt) - 1
                 encryptedword = encryptedword & vernamcyphers.binarytochar(vernamcyphers.DoanXOR(vernamcyphers.convertcharactertobinary(wordtoencrypt(i)), vernamcyphers.convertcharactertobinary(extra(i))), True)
 
