@@ -7,6 +7,7 @@
     Private completefile As String = ""
     Private threader As Threading.Thread
     Private enigmac As New enigmaclass
+    Private railfenceclasser As New railfenceclass
     Dim binarychar As String
     Dim binarycypherchar As String
     Dim vcyphercounter As Integer
@@ -15,7 +16,7 @@
     Dim visualveratext As String
     Dim percentagev As Integer = 0
     Dim threadover As Boolean = False
-    Dim railfenceclasser As railfenceclass
+
     '   Private type As New String
     Private Sub Ceaserloader_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         enigmac.predefinealphabets()

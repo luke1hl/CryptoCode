@@ -56,6 +56,10 @@
                 ceaserloaderf.Ceaserpanel.Hide()
                 ceaserloaderf.railfencego.Hide()
 
+                ceaserloaderf.Button2.Hide()
+                ceaserloaderf.Button3.Hide()
+                ceaserloaderf.Button4.Hide()
+
                 ceaserloaderf.enigmade.Hide()
                 Application.DoEvents()
                 ' MsgBox("")
@@ -70,7 +74,9 @@
                 ceaserloaderf.vernampanel.Hide()
                 ceaserloaderf.Ceaserpanel.Show()
                 ceaserloaderf.railfencego.Hide()
-
+                ceaserloaderf.Button2.Hide()
+                ceaserloaderf.Button3.Hide()
+                ceaserloaderf.Button4.Hide()
                 ceaserloaderf.enigmade.Hide()
                 If menusorter.returnecnryptordecrypt() = True Then 'using the background colour to store the value of if it should be encrypting or decrypting
                     ceaserloaderf.BackColor = Color.Black
@@ -85,6 +91,9 @@
                 ceaserloaderf.Ceaserpanel.Hide()
                 ceaserloaderf.railfencego.Hide()
                 ceaserloaderf.enigmade.Show()
+                ceaserloaderf.Button2.Hide()
+                ceaserloaderf.Button3.Hide()
+                ceaserloaderf.Button4.Hide()
                 If menusorter.returnecnryptordecrypt() = True Then 'using the background colour to store the value of if it should be encrypting or decrypting
                     ceaserloaderf.BackColor = Color.Black
 
@@ -98,6 +107,9 @@
                 ceaserloaderf.Ceaserpanel.Hide()
                 Ceaserloader.enigmade.Hide()
                 Ceaserloader.railfencego.Show()
+                ceaserloaderf.Button2.Show()
+                ceaserloaderf.Button3.Show()
+                ceaserloaderf.Button4.Show()
                 If menusorter.returnecnryptordecrypt() = True Then 'using the background colour to store the value of if it should be encrypting or decrypting
                     ceaserloaderf.BackColor = Color.Black
 
