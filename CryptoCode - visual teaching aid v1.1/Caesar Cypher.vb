@@ -1,30 +1,30 @@
 ﻿Public Class Caesar_Cypher
-    Dim caesar As New caesar
+    Dim caesar As New caesar 'This is the caesar form thats used to store methods for caesar
 
-    Private Sub Caesar_Cypher_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Caesar_Cypher_Load(sender As Object, e As EventArgs) Handles MyBase.Load 'loads caesar cypher
 
-        Me.FormBorderStyle = FormBorderStyle.FixedSingle
-        For i = 0 To Len(caesar.getalphabet()) - 1
+        Me.FormBorderStyle = FormBorderStyle.FixedSingle 'sets the form so the user can't expand the boarders
+        For i = 0 To Len(caesar.getalphabet()) - 1 'sets the text boxes to contain the alphabets
             If i <> 0 Then
                 plainbet.Text = plainbet.Text & " " & caesar.getalphabet(i)
             Else
                 plainbet.Text = plainbet.Text & caesar.getalphabet(i)
             End If
         Next
-        caesar.ceasercypher(caesar.getalphabet(), cypherbet, Cypher.Value)
-        Button1.Text = "encrypt"
+        caesar.ceasercypher(caesar.getalphabet(), cypherbet, Cypher.Value) 'ceasercyphers the alphabet
+        Button1.Text = "encrypt" 'sets the button text to encrypt as this is swappable later on to given the option to decrypt
         caesar.setcurrentype(True)
-        Encryptedtextbox.ReadOnly = True
+        Encryptedtextbox.ReadOnly = True 'sets all the colours for the different textboxes to demonstrate to user which are useable and which are not
         Encryptedtextbox.BackColor = Color.LightGray
     End Sub
 
-    Private Sub refresh_Tick(sender As Object, e As EventArgs) Handles refresha.Tick
+    Private Sub refresh_Tick(sender As Object, e As EventArgs) Handles refresha.Tick 'this just makes sure the cypher code is up to date with the slider
         caesar.setcyphercode(Cypher.Value)
 
     End Sub
 
 
-    Private Sub Plaintextbox_TextChanged(sender As Object, e As EventArgs) Handles Plaintextbox.TextChanged
+    Private Sub Plaintextbox_TextChanged(sender As Object, e As EventArgs) Handles Plaintextbox.TextChanged 'whenever you change the text that needs to be encrypted it will put it through the ceaser cypher encryption and return it tot the output box
         If caesar.returncurrent = True Then
             caesar.limitstring(Plaintextbox.Text, Plaintextbox, 10)
             caesar.setplaintext(Plaintextbox.Text)
@@ -36,7 +36,7 @@
 
 
 
-    Private Sub Cypher_ValueChanged(sender As Object, e As EventArgs) Handles Cypher.ValueChanged
+    Private Sub Cypher_ValueChanged(sender As Object, e As EventArgs) Handles Cypher.ValueChanged 'when you change the slider it update the caesar and alphabets to match with the current code
         Slidernumber.Text = Cypher.Value
         If caesar.returncurrent() = True Then
             caesar.setplaintext(Plaintextbox.Text)
@@ -52,7 +52,7 @@
         End If
     End Sub
 
-    Private Sub Encryptedtextbox_TextChanged(sender As Object, e As EventArgs) Handles Encryptedtextbox.TextChanged
+    Private Sub Encryptedtextbox_TextChanged(sender As Object, e As EventArgs) Handles Encryptedtextbox.TextChanged 'same as before but for decryption
         If caesar.returncurrent() = False Then
             caesar.limitstring(Encryptedtextbox.Text, Encryptedtextbox, 10)
             caesar.setcyphertext(Encryptedtextbox.Text)
@@ -61,7 +61,7 @@
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click 'this will change between encrypt and decrypt
         If caesar.returncurrent = True Then
             Encryptedtextbox.Text = ""
             Plaintextbox.Text = ""
@@ -104,7 +104,7 @@
         End If
     End Sub
 
-    Private Sub Menubutton_Click(sender As Object, e As EventArgs) Handles Menubutton.Click
+    Private Sub Menubutton_Click(sender As Object, e As EventArgs) Handles Menubutton.Click 'this will quit the form and go back to the starting menu
         caesar.backtothemenu(Me)
     End Sub
 End Class

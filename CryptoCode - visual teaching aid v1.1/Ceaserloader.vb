@@ -1,28 +1,26 @@
 ﻿Public Class Ceaserloader
     Private TheCCeaserloader As New CCaeserLoader
-    Private filePath As String
-    Private cyphernumba As Integer = 0
+    Private filePath As String 'used to store the file path when reading it
+    Private cyphernumba As Integer = 0 'used to define what type of cypher is occuring
     Private caesar As New caesar
     Private vernamc As New vernamcypher
     Private completefile As String = ""
     Private threader As Threading.Thread
     Private enigmac As New enigmaclass
-    Private railfenceclasser As New railfenceclass
+    Private railfenceclasser As New railfenceclass 'calls all classes so I can use them for all the different encryption methods
     Dim binarychar As String
     Dim binarycypherchar As String
     Dim vcyphercounter As Integer
     Dim vernamcyphers As String
     Dim officialvernatext As String
     Dim visualveratext As String
-    Dim percentagev As Integer = 0
+    Dim percentagev As Integer = 0 'used to determine the loading time of threading when used for the vernam cypher
     Dim threadover As Boolean = False
 
-    '   Private type As New String
     Private Sub Ceaserloader_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         enigmac.predefinealphabets()
 
-        'vernampanel.Show()
-        'Ceaserpanel.Hide()
+
         cyphernumber.Text = 0
         vcyphercounter = 0
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
@@ -31,34 +29,28 @@
             Case DialogResult.OK
                 filePath = OpenFileDialog1.FileName
                 textdisplay.Text = My.Computer.FileSystem.ReadAllText(filePath)
-                'caesar.ceasercypher(My.Computer.FileSystem.ReadAllText(filePath), textdisplay, 0)
             Case Else
         End Select
 
-        completefile = textdisplay.Text        'If Len(completefile) > 1000 Then
-        'For i = 0 To 1000 'limits file to 600 characters to improve efficency
-        'completefile = completefile & textdisplay.Text(i)
-        '    Next
-        'End If
-        ' If railfencego.Visible = False Then
-        If TheCCeaserloader.returndore = True Then
-                'MsgBox("got it")
-                completefile = completefile.Where(Function(x) Not Char.IsWhiteSpace(x)).ToArray()
-                textdisplay.Text = completefile
-                'MsgBox(completefile)
-                percentage.Maximum = Len(completefile)
-            ElseIf TheCCeaserloader.returndore = False And vernampanel.Visible = True Then
-                ' MsgBox("recived")
-                completefile = My.Computer.FileSystem.ReadAllText(filePath)
-                textdisplay.Text = completefile
-                percentage.Maximum = Len(completefile)
-            End If
+        completefile = textdisplay.Text
+        If TheCCeaserloader.returndore = True Then   ' all msgbox are used for testing so i'm just going to leave them in
+            'MsgBox("got it")
+            completefile = completefile.Where(Function(x) Not Char.IsWhiteSpace(x)).ToArray()
+            textdisplay.Text = completefile
+            'MsgBox(completefile)
+            percentage.Maximum = Len(completefile)
+        ElseIf TheCCeaserloader.returndore = False And vernampanel.Visible = True Then
+            ' MsgBox("recived")
+            completefile = My.Computer.FileSystem.ReadAllText(filePath)
+            textdisplay.Text = completefile
+            percentage.Maximum = Len(completefile)
+        End If
         ' End If
 
         frequencyanalysis(textdisplay.Text)
     End Sub
 
-    Private Sub Ceaserloader_BackColorChanged(sender As Object, e As EventArgs) Handles Me.BackColorChanged
+    Private Sub Ceaserloader_BackColorChanged(sender As Object, e As EventArgs) Handles Me.BackColorChanged 'this is used to detect a colour change from the previous form to determine wether its encrypt or decrypt
         If Me.BackColor = Color.Black Then
             Me.BackColor = Color.LightGreen
             TheCCeaserloader.setdore(True)
@@ -68,7 +60,7 @@
         End If
     End Sub
 
-    Private Sub Minus_Click(sender As Object, e As EventArgs) Handles Minus.Click
+    Private Sub Minus_Click(sender As Object, e As EventArgs) Handles Minus.Click 'used to lower the encryption code for caesar
         If cyphernumba > -10 Then
             cyphernumba -= 1
 
@@ -84,7 +76,7 @@
 
     End Sub
 
-    Private Sub plus_Click(sender As Object, e As EventArgs) Handles plus.Click
+    Private Sub plus_Click(sender As Object, e As EventArgs) Handles plus.Click 'used to raise the encryption code for caesar
         If cyphernumba <= 10 Then
             cyphernumba += 1
 
@@ -100,11 +92,11 @@
 
     End Sub
 
-    Private Sub save_Click(sender As Object, e As EventArgs) Handles save.Click
+    Private Sub save_Click(sender As Object, e As EventArgs) Handles save.Click 'use to save the file
         Select Case SaveFileDialog1.ShowDialog()
             Case DialogResult.OK
                 If vernampanel.Visible = True Then
-                    MsgBox(textdisplay.Text)
+                    'MsgBox(textdisplay.Text)
                     My.Computer.FileSystem.WriteAllText(SaveFileDialog1.FileName, textdisplay.Text, True)
 
                 Else
@@ -119,7 +111,7 @@
                 MsgBox("ERROR")
         End Select
     End Sub
-    Private Sub frequencyanalysis(input As String)
+    Private Sub frequencyanalysis(input As String) 'used for frequency analysis which will count the number of each character in any string
         frequency.Items.Clear()
         Dim chararray() As Char = input.ToCharArray
         Dim distinctarray() As Char = chararray.Distinct.ToArray
@@ -137,7 +129,7 @@
         Next
 
     End Sub
-    Private Sub removenastycharacters()
+    Private Sub removenastycharacters() 'takes away characters that come up in vernam if they are above a certain value to prevent error
         Dim holders As Integer
         Dim holderslist(10000) As Integer
         Dim holderslistcounter As Integer = 0
@@ -155,20 +147,18 @@
         Next
     End Sub
 
-    Private Sub vcchange()
+    Private Sub vcchange() 'this is used for the vernam cypher and cals the different methods used to change characters to and from binary as well as using the XOR
         Dim holder As String
         ' MsgBox("")
         vcyphercounter = 0
 
         officialvernatext = ""
         visualveratext = ""
-        ' textdisplay.Text = ""
-        '   If TheCCeaserloader.returndore = True Then
+
         If Len(VernamCypher.Text) <> 0 Then
 
             For i = 0 To Len(completefile) - 1
-                '  MsgBox("binary" & completefile(i) & Asc(completefile(i)))
-                ' If TheCCeaserloader.returndore = True Then
+
                 If TheCCeaserloader.returndore = False Then
                     binarychar = vernamc.ToBinary(Asc(completefile(i)) - 130)
 
@@ -177,11 +167,6 @@
 
                 End If
 
-                ' Else
-                '  binarychar = vernamc.ToBinary(Asc(completefile(i)))
-
-                '  End If
-                'MsgBox(vcyphercounter)
                 If Len(VernamCypher.Text) = 1 Then
                     vcyphercounter = 0
                 End If
@@ -192,51 +177,32 @@
                 Else
                     vcyphercounter = 0
                 End If
-                '    MsgBox(binarycypherchar & " " & binarychar)
-                'MsgBox(binarycypherchar & " " & binarychar & " " & vernamc.DoanXOR(binarychar, binarycypherchar))
+
                 holder = vernamc.DoanXOR(binarychar, binarycypherchar)
-                ' MsgBox(vernamc.binarytochar(binarycypherchar))
                 If TheCCeaserloader.returndore = True Then
                     visualveratext = visualveratext & vernamc.binarytochar(holder, True)
-                    '  MsgBox(binarycypherchar)
-                    ' officialvernatext = officialvernatext & vernamc.binarytocharnondisplay(binarycypherchar)
-                    'MsgBox(visualveratext)
-                    'MsgBox(officialvernatext)
+
                 Else
-                    '  MsgBox("decrypt" & holder)
-                    ' If binarychar = "0" Then
-                    'MsgBox("mmmmmmmmmmmmmmmm")
-                    ' MsgBox(VernamCypher.Text(vcyphercounter))
-                    'visualveratext = visualveratext & VernamCypher.Text(vcyphercounter)
-                    ' Else
-                    'MsgBox(vernamc.binarytochar(vernamc.DoanXOR(binarychar, binarycypherchar)))
-                    ' MsgBox(binarycypherchar)
+
                     visualveratext = visualveratext & vernamc.binarytochar(holder, False)
-                    'End If
 
                 End If
                 percentagev += 1
-                ' MsgBox(percentagev)
             Next
-            '  MsgBox("completea")
-            '  dostandardisation()
             threadover = True
             threader.Abort()
         Else
             percentagev = percentage.Maximum
             ' MsgBox("complete")
             visualveratext = completefile
-            ' dostandardisation()
             threadover = True
             threader.Abort()
 
         End If
-        ' Else
 
-        '  End If
 
     End Sub
-    Private Sub dostandardisation()
+    Private Sub dostandardisation() 'used to fix the formating of certain encryptions and make spacing normal
         Dim holders As Integer
         Dim holderslist(10000) As Integer
         Dim holderslistcounter As Integer = 0
@@ -267,7 +233,7 @@
         percentagev = 0
         VernamCypher.ReadOnly = False
     End Sub
-    Private Sub VernamCypher_TextChanged(sender As Object, e As EventArgs) Handles VernamCypher.TextChanged
+    Private Sub VernamCypher_TextChanged(sender As Object, e As EventArgs) Handles VernamCypher.TextChanged 'detects the change in vernam cypher and is used to commence the threading so that the encryption can occur in the background and load faster
         VernamCypher.ReadOnly = True
         threader = New Threading.Thread((AddressOf vcchange))
         threader.Start()
@@ -279,18 +245,18 @@
 
     End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick 'used to update the load bar for vernam
         percentage.Value = percentagev
     End Sub
 
-    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick 'used for when the thread ends
         If threadover = True Then
             threadover = False
             dostandardisation()
         End If
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click 'takes you back to home menu
         Dim menu As New Form1
         menu.Show()
         Me.Close()
@@ -299,14 +265,14 @@
     Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
         If vernamc.returncloseform() = "die" Then
             threader.Abort()
-            vernamc.resetcloseform()
+            vernamc.resetcloseform() 'used to kill the form if the vernam turns up an error This dosen't occur often but 
             Dim menu As New Form1
             menu.Show()
             Me.Close()
         End If
     End Sub
 
-    Private Sub enigmade_Click(sender As Object, e As EventArgs) Handles enigmade.Click
+    Private Sub enigmade_Click(sender As Object, e As EventArgs) Handles enigmade.Click 'if you click the enigma encode button it will perform the enigma as it dosen't require any encryption codes persay
         Dim holder As Char
         textdisplay.Text = ""
         'MsgBox(completefile)
@@ -330,7 +296,7 @@
 
 
 
-    Private Sub railfencego_Click(sender As Object, e As EventArgs) Handles railfencego.Click
+    Private Sub railfencego_Click(sender As Object, e As EventArgs) Handles railfencego.Click 'used to perform the railfence cypher
         If TheCCeaserloader.returndore = True Then
             textdisplay.Text = railfenceclasser.railfenceencrypt(completefile, Button4.Text)
         Else
@@ -340,21 +306,19 @@
         frequencyanalysis(textdisplay.Text)
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click 'used to lower railfence encryption number
         If Button4.Text > 2 Then
             Button4.Text -= 1
 
         End If
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click 'used to raise railfence encryption number
         If Button4.Text < 7 Then
             Button4.Text += 1
 
         End If
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
 
-    End Sub
 End Class

@@ -9,22 +9,17 @@
     Function returncyphercode() 'returns what the cypher code is
         Return cyphercode
     End Function
-    Sub setcurrentype(bol As Boolean)
+    Sub setcurrentype(bol As Boolean) 'sets wether its an encrypt or decrypt
         currenttyping = bol
     End Sub
     Function returncurrent()
         Return currenttyping
     End Function
-    ' Sub setcyphertext(cyphert As String)
-    '     cyphertext = cyphert
-    ' End Sub
-    ' Function returncyfa()
-    'Return cyphertext
-    'End Function
+
     Public Overrides Sub encrypt()
 
     End Sub
-    Sub decryptceasercypher(cyphertext As String, textbox As TextBox, cypher As Integer)
+    Sub decryptceasercypher(cyphertext As String, textbox As TextBox, cypher As Integer) 'will decrypt the ceaser cypher
         setplaintext("")
         cyphercode = cypher
         Dim holder As Integer
@@ -43,7 +38,8 @@
         End If
 
     End Sub
-    Function ceasercypheringame(plaintext As String, cypher As Integer)
+    Function ceasercypheringame(plaintext As String, cypher As Integer) 'specific ceaser cypher code to make sure the formatting used in the game is not particuarly weird
+
         setcyphertext("")
         cyphercode = cypher
         Dim holder As Integer
@@ -53,7 +49,7 @@
             holder += cyphercode
             setcyphertext(returncyphertext() & " " & Chr(holder))
         Next
-        Return returncyphertext()
+        Return returncyphertext() 'returns the cypher result
     End Function
     Sub ceasercypher(plaintext As String, textbox As TextBox, Cypher As Integer) 'cyphers the text
         setcyphertext("")
