@@ -1,6 +1,6 @@
-﻿Public Class CCaeserLoader
+﻿Public Class CCaeserLoader 'used to set encrypt or decrypt for the file loader
     Inherits cEncryption
-    Dim dore As Boolean
+    Dim dore As Boolean 'decrypt or encrypt
 
     Sub setdore(choice As Boolean)
         dore = choice

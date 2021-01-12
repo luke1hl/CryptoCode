@@ -5,13 +5,13 @@
     Private randomnumber As Integer 'holds the random number
     Private placeinstring As Integer 'hold place in string
     Private placeincypher As Integer
-    Sub resetcloseform()
+    Sub resetcloseform() 'used to determine if we want to just kill the form Ittl change the string to 'die' and when that happens it kills whatever forms open just as an error prevention method
         closeform = ""
     End Sub
-    Function returncloseform()
+    Function returncloseform() 'this is used to call close form if we feel like killing a form
         Return closeform
     End Function
-    Sub backtothemenu(sender As Form)
+    Sub backtothemenu(sender As Form) 'takes someone back to the menu
         Dim menu As New Form1
         menu.Show()
         sender.Close()
