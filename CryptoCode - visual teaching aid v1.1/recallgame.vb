@@ -1,13 +1,13 @@
 ﻿Public Class recallgame
-    Dim railfenceclass As New railfenceclass
-    Dim typesofencryption = New String() {"Ceaser", "Enigma", "Vernam", "Railfence"}
-    Dim currentcorrect As Integer
-    Dim cencryption As New cEncryption
-    Dim engimaclasss As New enigmaclass
-    Dim ceaser As New caesar
-    Dim vernamcyphers As New vernamcypher
-    Dim currentgenre As Integer
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Protected railfenceclass As New railfenceclass
+    Protected typesofencryption = New String() {"Ceaser", "Enigma", "Vernam", "Railfence"}
+    Protected currentcorrect As Integer
+    Protected cencryption As New cEncryption
+    Protected engimaclasss As New enigmaclass
+    Protected ceaser As New caesar
+    Protected vernamcyphers As New vernamcypher
+    Protected currentgenre As Integer
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click 'this exits back to the home menu
         Dim menu As New Form1
         menu.Show()
         Me.Close()
@@ -28,11 +28,11 @@
             createquestionfour()
         End If
     End Sub
-    Private Function choosetypeofencryption(max)
+    Private Function choosetypeofencryption(max) 'randomly picks a type of encryption
         Return cencryption.returnrandomnumber(1, max)
 
     End Function
-    Function pickrandomword()
+    Function pickrandomword() 'this will grab a random word from the text file i have stored in the project
 
         ' Dim ioFile As New System.IO.StreamReader("D:\Visual basic code\CryptoCode\CryptoCode - visual teaching aid v1.1\Collins Scrabble Words (2019).txt")
         Dim filelocation As String = System.IO.Path.GetFullPath((Application.StartupPath & "\..\..\Resources\Collins Scrabble Words (2019).txt"))
@@ -50,7 +50,7 @@
         Return lines(line).Trim()
 
     End Function
-    Private Function generaterandombinarynumber()
+    Private Function generaterandombinarynumber() 'this will make a random binary number by randomly picking a number 1 to 1000 if even it adds a zero if odd it adds a one
         Dim binarystring As String = ""
         For i = 0 To 7
             Dim oneorzero As Integer = cencryption.returnrandomnumber(1, 1000)
@@ -61,19 +61,19 @@
     End Function
     Private rnd As New Random()
 
-    Private Sub Shuffle(items As String())
+    Private Sub Shuffle(items As String()) 'this shuffles the order fo the answers
         Dim j As Int32
         Dim temp As String
 
         For n As Int32 = items.Length - 1 To 0 Step -1
-            j = Rnd.Next(0, n + 1)
+            j = rnd.Next(0, n + 1)
             ' Swap them.
             temp = items(n)
             items(n) = items(j)
             items(j) = temp
         Next n
     End Sub
-    Private Sub createquestionfour()
+    Private Sub createquestionfour() 'generates the xor question
         Dim listofpossibleanswer(3) As String
         Dim binaryone As String = generaterandombinarynumber()
         Dim binarytwo As String = generaterandombinarynumber()
@@ -99,7 +99,7 @@
 3. " & listofpossibleanswer(2) & "
 4. " & listofpossibleanswer(3))
     End Sub
-    Private Sub createquestionthree()
+    Private Sub createquestionthree() 'generates the finding the decryption of either ceaser or railfence questions
         Dim wordtoencrypt As String = pickrandomword()
         Dim listofpossibleanswer(3) As String
 
@@ -139,7 +139,7 @@
 3. " & listofpossibleanswer(2) & "
 4. " & listofpossibleanswer(3))
     End Sub
-    Private Sub createquestiontwo()
+    Private Sub createquestiontwo() 'asks a user to encrypt question
         Dim wordtoencrypt As String = pickrandomword()
         Dim listofpossibleanswer(3) As String
 
@@ -180,7 +180,7 @@
 4. " & listofpossibleanswer(3))
 
     End Sub
-    Private Sub createquestionone()
+    Private Sub createquestionone() 'what kind of encryption is this?
         Dim wordtoencrypt As String = pickrandomword()
         Dim key As Integer = cencryption.returnrandomnumber(3, 6)
         currentcorrect = cencryption.returnrandomnumber(1, 4)
@@ -223,30 +223,30 @@
 4.Railfence")
         enablebuttons()
     End Sub
-    Private Sub enablebuttons()
+    Private Sub enablebuttons() 'turns the answer buttons on
         answerone.Enabled = True
         answertwo.Enabled = True
         Answerthree.Enabled = True
         answerfour.Enabled = True
     End Sub
-    Private Sub disablebuttons()
+    Private Sub disablebuttons() 'turns the answer buttons off
         answerone.Enabled = False
         answertwo.Enabled = False
         Answerthree.Enabled = False
         answerfour.Enabled = False
     End Sub
-    Private Sub recallgame_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub recallgame_Load(sender As Object, e As EventArgs) Handles MyBase.Load 'this sets up the first question when you load the form
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
         disablebuttons()
         ' MsgBox(pickrandomword())
         pickgenre()
     End Sub
 
-    Private Sub newquestion_Click(sender As Object, e As EventArgs) Handles newquestion.Click
+    Private Sub newquestion_Click(sender As Object, e As EventArgs) Handles newquestion.Click 'will generate a new question when pushed
         pickgenre()
     End Sub
 
-    Private Sub answerone_Click(sender As Object, e As EventArgs) Handles answerone.Click
+    Private Sub answerone_Click(sender As Object, e As EventArgs) Handles answerone.Click 'this will all check wether the answer the user selcts is correct
         If currentcorrect = 1 Then
             MsgBox("well done thats the right answer")
         Else

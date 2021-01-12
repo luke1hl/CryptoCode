@@ -8,14 +8,14 @@
     Private threader As Threading.Thread
     Private enigmac As New enigmaclass
     Private railfenceclasser As New railfenceclass 'calls all classes so I can use them for all the different encryption methods
-    Dim binarychar As String
-    Dim binarycypherchar As String
-    Dim vcyphercounter As Integer
-    Dim vernamcyphers As String
-    Dim officialvernatext As String
-    Dim visualveratext As String
-    Dim percentagev As Integer = 0 'used to determine the loading time of threading when used for the vernam cypher
-    Dim threadover As Boolean = False
+    Protected binarychar As String
+    Protected binarycypherchar As String
+    Protected vcyphercounter As Integer
+    Protected vernamcyphers As String
+    Protected officialvernatext As String
+    Protected visualveratext As String
+    Protected percentagev As Integer = 0 'used to determine the loading time of threading when used for the vernam cypher
+    Protected threadover As Boolean = False
 
     Private Sub Ceaserloader_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         enigmac.predefinealphabets()

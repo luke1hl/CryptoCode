@@ -1,7 +1,7 @@
 ﻿Public Class Railfence
-    Dim completestring As String = ""
+    Protected completestring As String = "" 'holds a empty string
 
-    Private Sub Railfence_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Railfence_Load(sender As Object, e As EventArgs) Handles MyBase.Load 'this loads in all the different values for the loaction of the different letters for the animation
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
         Me.KeyPreview = True
         Label1.Text = TrackBar1.Value
@@ -23,15 +23,15 @@
         letterseven.Enabled = False
         lettereight.Enabled = False
     End Sub
-    Dim xone As Integer
-    Dim xtwo As Integer
-    Dim xthree As Integer
-    Dim xfour As Integer
-    Dim xfive As Integer
-    Dim xsix As Integer
-    Dim xseven As Integer
-    Dim xeight As Integer
-    Private Sub Engima_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
+    Protected xone As Integer
+    Protected xtwo As Integer
+    Protected xthree As Integer
+    Protected xfour As Integer
+    Protected xfive As Integer
+    Protected xsix As Integer
+    Protected xseven As Integer
+    Protected xeight As Integer
+    Private Sub Engima_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp 'this lets the user type in the word they want and also allows for a backspace
         If e.KeyValue <= 90 And e.KeyValue >= 65 Or Chr(e.KeyValue) = " " Then
             If Len(completestring) < 8 Then
                 completestring = completestring & Chr(e.KeyValue)
@@ -47,7 +47,7 @@
         End If
         updatedisplay()
     End Sub
-    Private Sub updatedisplay()
+    Private Sub updatedisplay() 'this updates the display with whatever letters are typed in
         letterone.Text = ""
         lettertwo.Text = ""
         letterthree.Text = ""
@@ -79,7 +79,7 @@
         TextBox1.Text = ""
     End Sub
 
-    Private Sub movestufftwo()
+    Private Sub movestufftwo() 'this is the animation for if the encryption code is 2
 
         For i = 0 To 70
             lettertwo.Top += 1
@@ -160,7 +160,7 @@
 
         Next
     End Sub
-    Private Sub movestuffthree()
+    Private Sub movestuffthree() 'this is the animation for if the encryption code is 3
         For i = 0 To 70
             lettertwo.Top += 1
             Refresh()
@@ -245,7 +245,7 @@
 
         Next
     End Sub
-    Private Sub movestufffour()
+    Private Sub movestufffour() 'this is the animation for if the encryption code is 4
         For i = 0 To 70
             lettertwo.Top += 1
             Refresh()
@@ -344,7 +344,7 @@
         Next
 
     End Sub
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click 'this is the go button but it checks that youve actually typed in a full 8 character string
         If letterone.Text <> "" And lettertwo.Text <> "" And letterthree.Text <> "" And letterfour.Text <> "" And letterfive.Text <> "" And lettersix.Text <> "" And letterseven.Text <> "" And lettereight.Text <> "" Then
             Button1.Visible = False
             TrackBar1.Visible = False
@@ -362,11 +362,11 @@
 
     End Sub
 
-    Private Sub TrackBar1_Scroll(sender As Object, e As EventArgs) Handles TrackBar1.Scroll
+    Private Sub TrackBar1_Scroll(sender As Object, e As EventArgs) Handles TrackBar1.Scroll 'this updates the value on the trackbar to let the user know which number theyve picked
         Label1.Text = TrackBar1.Value
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click 'this quits back to menu
         Dim menuitem As New Form1
         menuitem.Show()
         Me.Close()

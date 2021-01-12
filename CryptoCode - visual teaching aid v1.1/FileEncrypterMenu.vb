@@ -1,6 +1,6 @@
 ﻿Public Class FileEncrypterMenu
-    Dim menusorter As New cfileencryptermenu
-    Private Sub ceaser_Click(sender As Object, e As EventArgs) Handles ceaser.Click
+    Protected menusorter As New cfileencryptermenu
+    Private Sub ceaser_Click(sender As Object, e As EventArgs) Handles ceaser.Click 'all these different button clicks set the selected choice and make the visuals look nice
         menusorter.setmethod("ceaser")
         ceaser.BackColor = Color.LightBlue
         ceaser.ForeColor = Color.Black
@@ -24,7 +24,7 @@
         Button1.BackColor = Color.MediumBlue
     End Sub
 
-    Private Sub FileEncrypterMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FileEncrypterMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load 'this is to prevent the form from being expandable
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
 
     End Sub
@@ -47,11 +47,11 @@
         menusorter.setchoiceselected()
     End Sub
 
-    Private Sub ok_Click(sender As Object, e As EventArgs) Handles ok.Click
-        If menusorter.returncurrentlyselected() <> "" And menusorter.returnchoiceselected() = True Then
+    Private Sub ok_Click(sender As Object, e As EventArgs) Handles ok.Click 'when youve made your selections
+        If menusorter.returncurrentlyselected() <> "" And menusorter.returnchoiceselected() = True Then 'checks if stuff has actually been selected otherwise you can't continue
             Dim ceaserloaderf As New Ceaserloader
 
-            If menusorter.returncurrentlyselected() = "vernam" Then
+            If menusorter.returncurrentlyselected() = "vernam" Then 'this will now hide and show the appropriate stuff for the equivilent encryption type
                 ceaserloaderf.vernampanel.Show()
                 ceaserloaderf.Ceaserpanel.Hide()
                 ceaserloaderf.railfencego.Hide()
@@ -123,7 +123,7 @@
         End If
     End Sub
 
-    Private Sub Enigma_Click(sender As Object, e As EventArgs) Handles Enigma.Click
+    Private Sub Enigma_Click(sender As Object, e As EventArgs) Handles Enigma.Click 'this is just the same as above its to set the encryption type to enigma or railfence
         menusorter.setmethod("Enigma")
         ceaser.BackColor = Color.MediumBlue
         vernam.BackColor = Color.MediumBlue
