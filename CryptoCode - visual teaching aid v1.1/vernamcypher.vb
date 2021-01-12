@@ -1,9 +1,9 @@
 ﻿Public Class vernamcypher
     Inherits cEncryption
-    Dim placeinstring As Integer
-    Dim numberofcharactersinstring
-    Dim numbercypher As String
-    Sub setnumbercypher(number As String)
+    Protected placeinstring As Integer
+    Protected numberofcharactersinstring
+    Protected numbercypher As String
+    Sub setnumbercypher(number As String) 'whole class is meerly just used to return the places in string and to hold all the super important variables used in vernam as well as containing getters and setters for them
         numbercypher = number
     End Sub
     Function returnnumbercypher()
