@@ -1,5 +1,5 @@
 ﻿Public Class railfenceclass
-    Function railfenceencrypt(input As String, numberofrows As Integer)
+    Function railfenceencrypt(input As String, numberofrows As Integer) 'this performs the railfence encrypt for the game and the file encrypter
         Dim final As String = ""
 
         For i = 0 To numberofrows - 1
@@ -13,7 +13,7 @@
         Next
         Return final
     End Function
-    Function railfencedecrypt(input As String, numberofrows As Integer)
+    Function railfencedecrypt(input As String, numberofrows As Integer) 'same as before but this decrypts instead
         Dim final As String = ""
         ' MsgBox(Len(input))
         Dim nocols As Integer = Math.Ceiling(Len(input) / numberofrows)

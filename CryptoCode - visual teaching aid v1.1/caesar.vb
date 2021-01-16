@@ -1,8 +1,8 @@
 ﻿Public Class caesar
     Inherits cEncryption
-    Dim currenttyping As Boolean = True
-    Dim cyphercode As Integer 'used for the roation code
-    Dim cyphertext As String
+    Protected currenttyping As Boolean = True
+    Protected cyphercode As Integer 'used for the roation code
+    Protected cyphertext As String
     Sub setcyphercode(code As Integer)   'sets the cypher code when called
         cyphercode = code
     End Sub

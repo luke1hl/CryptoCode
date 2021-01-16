@@ -1,8 +1,8 @@
 ﻿Public Class cfileencryptermenu
-    Dim currentlyselectedmethod As String = ""
-    Dim encryptordecrypt As Boolean
-    Dim choiceselected As Boolean = False
-    Function returnchoiceselected()
+    Protected currentlyselectedmethod As String = ""
+    Protected encryptordecrypt As Boolean
+    Protected choiceselected As Boolean = False
+    Function returnchoiceselected() 'this is basically all to return to the file encrypter what type of encryption im using and wether im encrypting or decrypting
         Return choiceselected
     End Function
     Sub setchoiceselected()

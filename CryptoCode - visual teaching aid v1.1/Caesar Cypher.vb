@@ -1,5 +1,5 @@
 ﻿Public Class Caesar_Cypher
-    Dim caesar As New caesar 'This is the caesar form thats used to store methods for caesar
+    Private caesar As New caesar 'This is the caesar form thats used to store methods for caesar
 
     Private Sub Caesar_Cypher_Load(sender As Object, e As EventArgs) Handles MyBase.Load 'loads caesar cypher
 

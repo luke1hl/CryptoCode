@@ -4,7 +4,7 @@
 
     Private random As Integer
     Private currentselect As Integer
-    Sub initialiseselect(caesarselect As Panel, select2 As Panel, select3 As Panel, select4 As Panel, select5 As Panel, select6 As Panel)
+    Sub initialiseselect(caesarselect As Panel, select2 As Panel, select3 As Panel, select4 As Panel, select5 As Panel, select6 As Panel) 'creates all the different options and sets the first backcolour to green
         currentselect = 0
 
         options(0) = caesarselect
@@ -18,7 +18,7 @@
     Function returnselect()
         Return currentselect
     End Function
-    Sub rotateoption()
+    Sub rotateoption() 'rotates the colours through evertime you click giving the appearnce of roatting
         options(currentselect).BackColor = Color.Silver
         If currentselect = 5 Then
             currentselect = 0
@@ -29,7 +29,7 @@
         options(currentselect).BackColor = Color.Green
 
     End Sub
-    Sub spin(PictureBox1)
+    Sub spin(PictureBox1) 'this randomly spins the picturebox whenever you click it
         random = returnrandomnumber(1, 2)
         If random = 1 Then
             For i = 1 To returnrandomnumber(1, 5)
