@@ -112,7 +112,7 @@
             Try
                 Return Chr(dec + 130)
             Catch
-                MsgBox("your code contains some invalid characters try using a simpler file")
+                MsgBox("your code contains some invalid characters  try using a simpler file")
                 closeform = "die"
             End Try
 
